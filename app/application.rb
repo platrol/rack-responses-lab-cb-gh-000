@@ -1,13 +1,14 @@
 require "pry"
 class Application
+
+  @@items = ["Apples","Carrots","Pears"]
+
   def call(env)
     resp = Rack::Response.new
-  #  binding.pry
-    time_now = Time.now
-    if time_now.hour < 12
-      resp.write  "Good Morning!"
-    else
-      resp.write "Good Afternoon!"
+    req = Rack::Request.new(env)
+
+    @@items.each do |item|
+      resp.write "#{item}\n"
     end
 
     resp.finish
