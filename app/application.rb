@@ -13,7 +13,7 @@ class Application
     elsif req.path.match(/search/)
 
       search_term = req.params["q"]
-
+binding.pry
       if @@items.include?(search_term)
         resp.write "#{search_term} is one of our items"
       else
